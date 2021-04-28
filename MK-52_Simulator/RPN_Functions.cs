@@ -77,7 +77,7 @@ namespace MK52Simulator
         public const uint FUNC_LG = 50;
         public const uint FUNC_LN = 51;
         public const uint FUNC_LOAD = 52;
-        public const uint FUNC_LOADFROM = 53;
+        //public const uint FUNC_LOADFROM = 53;
         public const uint FUNC_LOADALL = 54;
         public const uint FUNC_LOADALLFROM = 55;
         public const uint FUNC_LOADDATA = 56;
@@ -318,8 +318,8 @@ namespace MK52Simulator
             _appendFunction( new Func_SaveAs());
             // #define FUNC_LOAD               84
             _appendFunction( new Func_Load());
-            // #define FUNC_LOADFROM           85
-            _appendFunction( new Func_LoadFrom());
+            //// #define FUNC_LOADFROM           85
+            //_appendFunction( new Func_LoadFrom());
             // #define FUNC_CHAIN              86
             _appendFunction( new Func_Chain());
             // #define FUNC_SAVEDATA           87

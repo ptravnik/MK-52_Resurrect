@@ -171,16 +171,21 @@ namespace MK52Simulator
 
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _stopIfRunning().requestNextReceiver("FontTest");
+            if (myRPN.current_Receiver.Moniker == "AUTO_R") return;
+            RPN_Functions fn = _stopIfRunning();
+            fn.requestNextReceiver("FontTest");
+            myRPN.tick();
+            timer1.Enabled = true;
         }
 
         private RPN_Functions _stopIfRunning()
         {
             RPN_Functions fn = myRPN.getFunctions(); 
-            timer1.Enabled = false;
             if (myRPN.current_Receiver.Moniker != "AUTO_R") return fn;
-            fn.requestNextReceiver("AUTO_N");
-            myRPN.tick();
+            timer1.Enabled = false;
+            backgroundWorker1.CancelAsync();
+            //fn.requestNextReceiver("AUTO_N");
+            //myRPN.tick();
             return fn;
         }
 
