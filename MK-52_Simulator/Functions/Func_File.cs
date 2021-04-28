@@ -103,23 +103,23 @@ namespace MK52Simulator
         }
     }
 
+    //public class Func_Load : RPN_Function
+    //{
+    //    public override bool checkID(uint id)
+    //    {
+    //        return id == RPN_Functions.FUNC_LOAD;
+    //    }
+    //    public override void execute(MK52_Host components, string command)
+    //    {
+    //        components.getFunctions().loadProgram();
+    //    }
+    //}
+
     public class Func_Load : RPN_Function
     {
         public override bool checkID(uint id)
         {
             return id == RPN_Functions.FUNC_LOAD;
-        }
-        public override void execute(MK52_Host components, string command)
-        {
-            components.getFunctions().loadProgram();
-        }
-    }
-
-    public class Func_LoadFrom : RPN_Function
-    {
-        public override bool checkID(uint id)
-        {
-            return id == RPN_Functions.FUNC_LOADFROM;
         }
         public override bool checkName(string name)
         {
