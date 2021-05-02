@@ -68,7 +68,7 @@ void MK52_Host::init() {
 
     _addReceivers();
 
-    bool result = _m_RPN_Functions.loadState();
+    _m_RPN_Functions.loadState();
  
     #ifdef __DEBUG
     Serial.println();
@@ -80,7 +80,6 @@ void MK52_Host::init() {
 
     // end splash and start serving keyboard
     _m_Hardware_LCD.waitForEndSplash( splashReady, false);
-    _m_RPN_Functions.requestNextReceiver( _RECEIVER_AUTO_N);
     return;
 }
 
@@ -168,6 +167,7 @@ void MK52_Host::_addReceivers(){
     _addReceiver( new Receiver_Number_PROG( _components));
 
     _addReceiver( new Receiver_Text( _components));
+    _addReceiver( new Receiver_Text_FN( _components));
 
     _addReceiver( new Receiver_Address( _components));
     _addReceiver( new Receiver_Address_AMX( _components));

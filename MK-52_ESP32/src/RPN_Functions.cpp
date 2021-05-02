@@ -13,7 +13,7 @@
 using namespace MK52_Interpreter;
 
 #include <math.h>
-#include "../functions/functions.hpp"
+#include "../functions/Functions.hpp"
 
 //
 // Inits the calculator program memory
@@ -181,26 +181,16 @@ void RPN_Functions::init( void *components[]) {
     _appendFunction( new Func_MkDir());
     // #define FUNC_REMOVE             80
     _appendFunction( new Func_Remove());
-    // #define FUNC_STEPIN             81
-    _appendFunction( new Func_StepIn());
     // #define FUNC_SAVE               82
     _appendFunction( new Func_Save());
-    // #define FUNC_SAVEAS             83
-    _appendFunction( new Func_SaveAs());
     // #define FUNC_LOAD               84
     _appendFunction( new Func_Load());
-    // #define FUNC_LOADFROM           85
-    _appendFunction( new Func_LoadFrom());
     // #define FUNC_CHAIN              86
     _appendFunction( new Func_Chain());
     // #define FUNC_SAVEDATA           87
     _appendFunction( new Func_SaveData());
-    // #define FUNC_SAVEDATAAS         88
-    _appendFunction( new Func_SaveDataAs());
     // #define FUNC_LOADDATA           89
     _appendFunction( new Func_LoadData());
-    // #define FUNC_LOADDATAFROM       90
-    _appendFunction( new Func_LoadDataFrom());
     // #define FUNC_IFNOTLT0           92
     _appendFunction( new Func_IfNotLT0());
     // #define FUNC_IFNOTEQ0           93
@@ -237,12 +227,8 @@ void RPN_Functions::init( void *components[]) {
     _appendFunction(new Func_LBR());
     // #define FUNC_SAVEALL            109
     _appendFunction(new Func_SaveAll());
-    // #define FUNC_SAVEALLAS          110
-    _appendFunction(new Func_SaveAllAs());
     // #define FUNC_LOADALL            111
     _appendFunction(new Func_LoadAll());
-    // #define FUNC_LOADALLFROM        112
-    _appendFunction(new Func_LoadAllFrom());
 
     // if the name is not found, it must be a number and should be placed to register X
     _appendFunction( new Func_Number());

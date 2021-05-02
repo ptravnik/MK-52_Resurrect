@@ -60,11 +60,8 @@
 #define FUNC_LG                 50
 #define FUNC_LN                 51
 #define FUNC_LOAD               52
-#define FUNC_LOADFROM           53
 #define FUNC_LOADALL            54
-#define FUNC_LOADALLFROM        55
 #define FUNC_LOADDATA           56
-#define FUNC_LOADDATAFROM       57
 #define FUNC_LOG                58
 
 #define FUNC_M2X                59
@@ -90,10 +87,9 @@
 
 #define FUNC_PLUS               78
 
-#define FUNC_SAVEALL            79
-#define FUNC_SAVEALLAS          80
+#define FUNC_SAVE               79
+#define FUNC_SAVEALL            80
 #define FUNC_SAVEDATA           81
-#define FUNC_SAVEDATAAS         82
 #define FUNC_SIGN               83
 #define FUNC_SIN                84
 #define FUNC_SQRT               85
@@ -110,9 +106,7 @@
 #define FUNC_ROT                94
 
 #define FUNC_SAVE               95
-#define FUNC_SAVEAS             96
 #define FUNC_SEED               97
-#define FUNC_STEPIN             98
 
 #define FUNC_WHOLE              100
 

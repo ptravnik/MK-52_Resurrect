@@ -23,7 +23,7 @@ void Receiver_OFF::activate( int8_t prevReceiver){
     Serial.println("]");
     #endif
     Receiver::activate(prevReceiver);
-    _rpnf->saveState();
+    _rpnf->saveState( prevReceiver);
     digitalWrite( SYSTEM_POWER_HOLD, LOW);
 
     // after the power transistor is installed, this will not happen:

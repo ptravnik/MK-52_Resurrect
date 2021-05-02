@@ -142,7 +142,6 @@ class Func_MkDir: public RPN_Function{
         inline bool checkID( uint16_t id){ return id == FUNC_MKDIR;};
         inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
         inline const char*Name(){ return PSTR("MKDIR ");};
-        inline const char*IOName(){ return Name();};
         void execute( void *components[], char *command){
             _SDM(components)->createFolder( command);};
 };
@@ -150,24 +149,15 @@ class Func_MkDir: public RPN_Function{
 class Func_Remove: public RPN_Function{
     public:
         inline bool checkID( uint16_t id){ return id == FUNC_REMOVE;};
-        void execute( void *components[], char *command);
-};
-
-class Func_StepIn: public RPN_Function{
-    public:
-        inline bool checkID( uint16_t id){ return id == FUNC_STEPIN;};
-        void execute( void *components[], char *command);
+        inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
+        inline const char*Name(){ return PSTR("REMOVE ");};
+        void execute( void *components[], char *command){
+            _SDM(components)->deleteEntity( command);};
 };
 
 class Func_Save: public RPN_Function{
     public:
         inline bool checkID( uint16_t id){ return id == FUNC_SAVE;};
-        void execute( void *components[], char *command);
-};
-
-class Func_SaveAs: public RPN_Function{
-    public:
-        inline bool checkID( uint16_t id){ return id == FUNC_SAVEAS;};
         inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
         inline const char*Name(){ return PSTR("SAVE ");};
         void execute( void *components[], char *command);
@@ -176,12 +166,6 @@ class Func_SaveAs: public RPN_Function{
 class Func_Load: public RPN_Function{
     public:
         inline bool checkID( uint16_t id){ return id == FUNC_LOAD;};
-        void execute( void *components[], char *command);
-};
-
-class Func_LoadFrom: public RPN_Function{
-    public:
-        inline bool checkID( uint16_t id){ return id == FUNC_LOADFROM;};
         inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
         inline const char*Name(){ return PSTR("LOAD ");};
         void execute( void *components[], char *command);
@@ -190,12 +174,6 @@ class Func_LoadFrom: public RPN_Function{
 class Func_SaveData: public RPN_Function{
     public:
         inline bool checkID( uint16_t id){ return id == FUNC_SAVEDATA;};
-        void execute( void *components[], char *command);
-};
-
-class Func_SaveDataAs: public RPN_Function{
-    public:
-        inline bool checkID( uint16_t id){ return id == FUNC_SAVEDATAAS;};
         inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
         inline const char*Name(){ return PSTR("SAVEDATA ");};
         void execute( void *components[], char *command);
@@ -204,12 +182,6 @@ class Func_SaveDataAs: public RPN_Function{
 class Func_LoadData: public RPN_Function{
     public:
         inline bool checkID( uint16_t id){ return id == FUNC_LOADDATA;};
-        void execute( void *components[], char *command);
-};
-
-class Func_LoadDataFrom: public RPN_Function{
-    public:
-        inline bool checkID( uint16_t id){ return id == FUNC_LOADDATAFROM;};
         inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
         inline const char*Name(){ return PSTR("LOADDATA ");};
         void execute( void *components[], char *command);
@@ -218,12 +190,6 @@ class Func_LoadDataFrom: public RPN_Function{
 class Func_SaveAll: public RPN_Function{
     public:
         inline bool checkID( uint16_t id){ return id == FUNC_SAVEALL;};
-        void execute( void *components[], char *command);
-};
-
-class Func_SaveAllAs: public RPN_Function{
-    public:
-        inline bool checkID( uint16_t id){ return id == FUNC_SAVEALLAS;};
         inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
         inline const char*Name(){ return PSTR("SAVEALL ");};
         void execute( void *components[], char *command);
@@ -232,12 +198,6 @@ class Func_SaveAllAs: public RPN_Function{
 class Func_LoadAll: public RPN_Function{
     public:
         inline bool checkID( uint16_t id){ return id == FUNC_LOADALL;};
-        void execute( void *components[], char *command);
-};
-
-class Func_LoadAllFrom: public RPN_Function{
-    public:
-        inline bool checkID( uint16_t id){ return id == FUNC_LOADALLFROM;};
         inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
         inline const char*Name(){ return PSTR("LOADALL ");};
         void execute( void *components[], char *command);
@@ -290,8 +250,10 @@ class Func_Stop: public RPN_Function{
         inline bool checkID( uint16_t id){ return id == FUNC_STOP;};
         inline bool checkName(char *name){ return UniversalValue::_identicalTo_P( name, Name());};
         inline const char*Name(){ return PSTR("STOP");};
-        // On the original MK-52 stop advanced PC to the next operator
-        // inline void advancePC(void *components[]){};
+        // On the original MK-52 STOP advances PC to the next operator
+        inline void advancePC(void *components[]){
+           _ProgMem( components)->incrementCounter(); 
+        };
         inline void execute( void *components[], char *command){
             RPN_Functions *fs = (RPN_Functions *)components[COMPONENT_FUNCTIONS];
             fs->_atStop = true;};
