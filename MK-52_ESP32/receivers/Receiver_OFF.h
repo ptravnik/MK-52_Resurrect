@@ -30,6 +30,8 @@ void Receiver_OFF::activate( int8_t prevReceiver){
     _lcd->dimScreen();
     _lcd->clearScreen(false);
     _kbd->LEDOn = false;
+    _kbd->reset();
+    //esp_deep_sleep_start();
 }
 
 uint8_t Receiver_OFF::tick( uint8_t scancode){

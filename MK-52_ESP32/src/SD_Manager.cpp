@@ -329,13 +329,12 @@ bool SD_Manager::readln( char *buffer, int32_t n){
 void SD_Manager::createFolder( char * name){
     if( !SDMounted) return;
     if(strlen(name) <= 0) return; // no name given
-    makeEntityName( name);
     #ifdef __DEBUG
     Serial.print( "Creating folder: ");
-    Serial.println( _text);
+    Serial.println( name);
     #endif
-    if( !SD.mkdir(_text)) return;
-    setFolder( _text);
+    if( !SD.mkdir(name)) return;
+    setFolder( name);
 }
 
 void SD_Manager::upFolder(){

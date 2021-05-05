@@ -208,6 +208,7 @@ class Func_Chain: public RPN_Function{
         inline bool checkID( uint16_t id){ return id == FUNC_CHAIN;};
         inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
         inline const char*Name(){ return PSTR("CHAIN ");};
+        inline void advancePC(void *components[]){};
         void execute( void *components[], char *command);
 };
 

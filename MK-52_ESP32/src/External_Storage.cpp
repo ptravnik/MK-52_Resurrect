@@ -58,7 +58,8 @@ bool RPN_Functions::loadState(){
     #ifdef __DEBUG
     Serial.println("Loading state file");
     #endif
-    if( _sd->openFile_P(StatusFile)) return _RECEIVER_AUTO_N;
+    requestNextReceiver( _RECEIVER_AUTO_N);
+    if( _sd->openFile_P(StatusFile)) return true;
     bool result = _read( true, true, true, true);
     _sd->closeFile();
     return result;
@@ -360,7 +361,6 @@ bool RPN_Functions::_read(bool readStack, bool readProg, bool readMem, bool read
     uint32_t callStackActual = 0;
     uint8_t regAddress = 0;
     char *ptr = NULL;
-    requestNextReceiver( _RECEIVER_AUTO_N);
     while( true){
         bool result = _sd->readln( _text, PROGRAM_LINE_LENGTH);
         if( result && _text[0] == 0) break;

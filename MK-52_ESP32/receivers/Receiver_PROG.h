@@ -471,7 +471,10 @@ uint8_t Receiver_PROG_FK::tick( uint8_t scancode){
             return _rpnf->requestNextReceiver(_RECEIVER_TEXT_FN, _RECEIVER_PROG_N);
         case 11:
             _rpnf->appendProgramLine_P(FUNC_CHAIN);
-            return _rpnf->requestNextReceiver(_RECEIVER_TEXT, _RECEIVER_PROG_N);
+            return _rpnf->requestNextReceiver(_RECEIVER_TEXT_FN, _RECEIVER_PROG_N);
+        case 12:
+            _rpnf->appendProgramLine_P(FUNC_MKDIR);
+            return _rpnf->requestNextReceiver(_RECEIVER_TEXT_FN, _RECEIVER_PROG_N);
 
         // Column 6
         case 27:
@@ -480,8 +483,8 @@ uint8_t Receiver_PROG_FK::tick( uint8_t scancode){
 
         // Column 7
         case 32:
-            // Clear FK mode
-            return _rpnf->requestNextReceiver(_RECEIVER_PROG_N);
+            _rpnf->appendProgramLine_P(FUNC_REMOVE);
+            return _rpnf->requestNextReceiver(_RECEIVER_TEXT_FN, _RECEIVER_PROG_N);
         case 33:
             // Shutdown signal
             _rpnf->requestNextReceiver(_RECEIVER_PROG_N);

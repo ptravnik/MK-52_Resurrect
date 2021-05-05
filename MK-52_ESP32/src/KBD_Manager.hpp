@@ -42,6 +42,8 @@ namespace MK52_Hardware{
         inline void resetLastPressed(){
           lastScanTime = millis();
           lastPressedTime = lastScanTime;}
+        inline void reset(){
+          _pulseRST();};
       private:
         void _pulseRST();
         void _pulseCLK();
