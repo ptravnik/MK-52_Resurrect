@@ -36,6 +36,11 @@ namespace MK52Simulator
         {
             myRPN.tick();
             string s = KBD_Manager1.getButtonsRecorderMessage();
+            if (radioButton1.Checked != myRPN._m_Hardware_KBD.LEDOn)
+            {
+                radioButton1.Checked = myRPN._m_Hardware_KBD.LEDOn;
+                radioButton1.Refresh();
+            }
             if (label1.Text != s)
             {
                 label1.Text = s;
@@ -234,6 +239,11 @@ namespace MK52Simulator
         private void button_CopyX_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(myRPN._m_RPN_Stack.X.toString());
+        }
+
+        private void radioButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

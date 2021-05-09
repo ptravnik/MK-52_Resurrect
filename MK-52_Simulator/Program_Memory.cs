@@ -321,7 +321,7 @@ namespace MK52Simulator
                     break;
                 default:
                     __moveStringsFromCurrent(-s.Length-1);
-                    renumberAdresses(_current, -1);
+                    renumberAdresses(_counter, -1);
                     break;
             }
         }
