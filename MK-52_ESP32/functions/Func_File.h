@@ -30,5 +30,5 @@ void Func_LoadAll::execute( void *components[], char *command){
 
 void Func_Chain::execute( void *components[], char *command){
     RPN_Functions *rpnf = (RPN_Functions *)components[COMPONENT_FUNCTIONS];
-    rpnf->loadProgram( command); // TODO: check operational
+    rpnf->loadProgram( command);
 }

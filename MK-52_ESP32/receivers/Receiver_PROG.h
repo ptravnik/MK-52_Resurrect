@@ -638,7 +638,21 @@ uint8_t Receiver_PROG_FA::tick( uint8_t scancode){
             _rpnf->progMem->setCounterToBottom();
             return _rpnf->requestNextReceiver(_RECEIVER_PROG_N);
 
+        // Column 6
+        case 25:
+            _rpnf->appendProgramLine_P(FUNC_DELAY);
+            return _rpnf->requestNextReceiver(_RECEIVER_ADDRESS, _RECEIVER_PROG_N);
+        case 26:
+            _rpnf->appendProgramLine_P(FUNC_UPDATE);
+            break;
+
         // Column 7
+        case 29:
+            _rpnf->appendProgramLine_P(FUNC_LEDON);
+            break;
+        case 30:
+            _rpnf->appendProgramLine_P(FUNC_LEDOFF);
+            break;
         case 31:
             _rpnf->rpnStack->X->toString( tmpBuff);
             _rpnf->progMem->updateLine( tmpBuff);

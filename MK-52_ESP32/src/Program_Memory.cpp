@@ -357,7 +357,7 @@ void Program_Memory::deleteLine(){
             break;
         default:
             _moveStringsFromCurrent(-ln-1);
-            renumberAdresses(_current, -1);
+            renumberAdresses(_counter, -1);
             break;
     }
 }

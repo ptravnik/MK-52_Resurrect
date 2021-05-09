@@ -65,12 +65,6 @@ class Func_Empty: public RPN_Function{
         inline void execute( void *components[], char *command){};
 };
 
-class Func_NOP: public RPN_Function{
-    public:
-        inline bool checkID( uint16_t id){ return id == FUNC_NOP;};
-        inline void execute( void *components[], char *command){};
-};
-
 class Func_Number: public RPN_Function{
     public:
         inline bool checkName(char *name){ return UniversalValue::_looksLikeANumber(name);};
@@ -919,4 +913,37 @@ class Func_DMOD_GRD: public RPN_Function{
             _Stack( components)->setDMode( DMODE_GRADS);};
 };
 
+//
+// ESP32 Hardware
+// 
+class Func_Delay: public RPN_Function{
+    public:
+        inline bool checkID( uint16_t id){ return id == FUNC_DELAY;};
+        inline bool checkName(char *name){ return UniversalValue::_startsWith_P( name, Name());};
+        inline const char*Name(){ return PSTR("DELAY ");};
+        void execute( void *components[], char *command);
+};
 
+class Func_LEDOn: public RPN_Function{
+    public:
+        inline bool checkID( uint16_t id){ return id == FUNC_LEDON;};
+        inline bool checkName(char *name){ return UniversalValue::_identicalTo_P( name, Name());};
+        inline const char*Name(){ return PSTR("LED ON");};
+        void execute( void *components[], char *command);
+};
+
+class Func_LEDOff: public RPN_Function{
+    public:
+        inline bool checkID( uint16_t id){ return id == FUNC_LEDON;};
+        inline bool checkName(char *name){ return UniversalValue::_identicalTo_P( name, Name());};
+        inline const char*Name(){ return PSTR("LED OFF");};
+        void execute( void *components[], char *command);
+};
+
+class Func_Update: public RPN_Function{
+    public:
+        inline bool checkID( uint16_t id){ return id == FUNC_UPDATE;};
+        inline bool checkName(char *name){ return UniversalValue::_identicalTo_P( name, Name());};
+        inline const char*Name(){ return PSTR("UPDATE");};
+        void execute( void *components[], char *command);
+};

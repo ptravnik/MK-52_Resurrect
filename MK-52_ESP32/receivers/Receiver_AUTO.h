@@ -567,6 +567,12 @@ uint8_t Receiver_AUTO_FA::tick( uint8_t scancode){
             return Receiver_AUTO::tick(0);
 
         // Column 7
+        case 29:
+            _rpnf->execute( FUNC_LEDON);
+            break;
+        case 30:
+            _rpnf->execute( FUNC_LEDOFF);
+            break;
         case 32:
             // Clear F mode
             break;
